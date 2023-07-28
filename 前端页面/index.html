@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>核反应堆数字孪生可视化</title>
     <link rel="stylesheet" href="css/index.css" />
+    	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
   </head>
   <body>
 
@@ -54,6 +57,14 @@
           <h2>项目介绍</h2>
           <!-- 图表放置盒子 -->
           <!-- <div class="chart" id="graph1"></div> -->
+          <p style="font-size:10px; color:gray; line-height: 1.5;">
+          研究目的：本项目研究目标为在已经建立的反应堆物理堆芯运行数字孪生模型基础上，通过优化模型降阶方法、机器学习技术和反问题建模，实现对反应堆运行状态的快速准确监测和操纵。
+
+          <br>
+          <br>
+          可视化系统：通过一维到三维对于核反应堆实时数据的展示，让用户更加直观了解到核反应堆的状况，通过数字化手段监测核反应堆状况。
+          
+          </p>
 
           <!-- 伪元素绘制盒子下边角 -->
           <div class="panel-footer"></div>
@@ -89,13 +100,13 @@
         <div class="no">
           <div class="no-hd">
             <ul>
-              <li>12434</li>
-              <li>0～1</li>
+              <li>15 x 15</li>
+              <li>0～52</li>
             </ul>
           </div>
           <div class="no-bd">
             <ul>
-              <li>核反应堆数量</li>
+              <li>核反应堆大小</li>
               <li>热力值范围</li>
             </ul>
           </div>
@@ -114,9 +125,9 @@
 
       <!-- 右侧盒子 -->
       <div class="column">
-        <div class="panel bar2">
-          <h2>板块4</h2>
-          <div class="chart"></div>
+        <div class="panel bar2" style="height:360px">
+          <h2>三维数据</h2>
+          <div class="chart" id="graph3"></div>
           <div class="panel-footer"></div>
         </div>
         <div class="panel line2">
@@ -124,11 +135,11 @@
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
-        <div class="panel pie2">
+        <!-- <div class="panel pie2">
           <h2>板块6</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -142,5 +153,6 @@
     <!-- <script src="js/index.js"></script> -->
     <script src="js/graph1.js"></script>
     <script src="js/graph2.js"></script>
+    <script src="js/graph3.js"></script>
   </body>
 </html>

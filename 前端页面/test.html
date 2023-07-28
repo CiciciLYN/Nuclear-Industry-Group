@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3D Heatmap Cylinder</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+</head>
+<body>
+  <div id="graph"></div>
+
+  <script>
+    // 初始化 ECharts 实例
+    var myChart = echarts.init(document.getElementById('graph'));
+
+    // 生成数据
+    function generateData() {
+      var data = [];
+      for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 15; j++) {
+          data.push([i, j, Math.random() * 100]);
+        }
+      }
+      return data;
+    }
+
+    // 设置图表的配置项
+    var option = {
+      tooltip: {},
+      visualMap: {
+        min: 0,
+        max: 100,
+        calculable: true,
+        realtime: false,
+        inRange: {
+          color: ['#ffffff', '#ff0000'] // 使用红白渐变表示热力图的数值
+        }
+      },
+      xAxis3D: {
+        type: 'category',
+        data: Array.from({ length: 10 }, (v, i) => i), // X轴数据，这里简单使用0到9的整数
+      },
+      yAxis3D: {
+        type: 'category',
+        data: Array.from({ length: 15 }, (v, i) => i), // Y轴数据，这里简单使用0到14的整数
+      },
+      zAxis3D: {
+        type: 'value'
+      },
+      grid3D: {
+        boxWidth: 100,
+        boxDepth: 50,
+        boxHeight: 200,
+        viewControl: {
+          distance: 200 // 设置视角距离
+        }
+      },
+      series: [{
+        type: 'heatmap3D',
+        data: generateData(),
+        shading: 'color', // 使用颜色渲染热力图
+        label: {
+          show: false
+        },
+        emphasis: {
+          label: {
+            show: true,
+            textStyle: {
+              fontSize: 16,
+              borderWidth: 1,
+              borderColor: '#fff'
+            }
+          }
+        }
+      }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
